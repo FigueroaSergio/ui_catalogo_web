@@ -1,3 +1,10 @@
+user = JSON.parse(user);
+if (user.type == "ASE") {
+  window.location.replace("/profile.html");
+} else if (user.type == "COORD") {
+  window.location.replace("/profileCoord.html");
+}
+
 var strt = {
   user: {
     identification: {
@@ -31,7 +38,7 @@ var strt = {
     address: { type: "text", maxlength: "50", edition: true, view: true },
     type: {
       type: "select",
-      for: ["COORD", "ASE", "AMD"],
+      for: ["COORD", "ASE", "ADM"],
       edition: true,
       view: true,
     },
@@ -97,7 +104,7 @@ var tables = {
   ],
 };
 
-var page = "clothe";
+var page = "user";
 console.log(strt[page]);
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link").forEach((link) => {
@@ -140,7 +147,7 @@ formView.addEventListener("submit", function (event) {
     let opt = { post: "new", put: "update" };
 
     let data = form.getData();
-    let url = `http://localhost:8080/api/${page}/${opt[action]}`;
+    let url = `${URL}/api/${page}/${opt[action]}`;
     console.log(data);
 
     console.log(url);
@@ -149,7 +156,7 @@ formView.addEventListener("submit", function (event) {
       console.log(r);
       if (page == "user" && r.id == null) {
         showModal("Error", "Email already exist ");
-      } else if (page == "user" && r.reference == null) {
+      } else if (page == "clothe" && r.reference == null) {
         showModal("Error", "There was and error ");
       } else if (action == "post") {
         showModal("Success", `${page} created`);
@@ -383,18 +390,18 @@ var form = new Form();
 async function traerDatos(page) {
   //console.log("hear");
   await table.renderHead();
-  let URL = `http://localhost:8080/api/${page}/all`;
-  test(URL, "get", {}, function (response) {
+  let url = `${URL}/api/${page}/all`;
+  test(url, "get", {}, function (response) {
     // console.log(response);
     table.dataSet = response;
     table.render();
   });
 }
 async function deleteDato() {
-  let URL = `http://localhost:8080/api/${page}/${idSubmit}`;
+  let url = `${URL}/api/${page}/${idSubmit}`;
   // console.log(URL);
   //console.log(data);
-  test(URL, action, {}, function (response) {
+  test(url, action, {}, function (response) {
     if (response == undefined) {
       showModal("Success", `${page} deleted`);
     }

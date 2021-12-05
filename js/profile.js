@@ -5,21 +5,27 @@ const tbOrders = document.getElementById("tb-orders");
 const quantity = document.getElementById("num-product");
 const btnPedido = document.getElementById("send-pedido");
 const form = document.getElementById("form-order");
-
+user = JSON.parse(user);
+if (user.type == "COORD") {
+  window.location.replace("/profileCoord.html");
+}
+if (user.type == "ADM") {
+  window.location.replace("/admin.html");
+}
 let products = {};
 let order = { products: {}, quantities: {}, salesMan: {}, registerDay: 0 };
 let count = 1;
 fillData(user);
 getProducts();
 function getProducts() {
-  url = "http://localhost:8080/api/clothe/all";
+  url = `${URL}/api/clothe/all`;
   test(url, "get", {}, (data) => {
     renderData(data);
   });
 }
 renderData = function (data) {
   products = data;
-  order.salesMan = JSON.parse(user);
+  order.salesMan = user;
   if (data.length == 0) {
     let tr = document.createElement("tr");
     let td = document.createElement("td");
@@ -107,6 +113,6 @@ function deleteRow(id, ref, quat) {
 }
 btnPedido.addEventListener("click", () => {
   order.registerDay = new Date();
-  url = "http://localhost:8080/api/order/new";
-  test(url, "post", order, (res) => console.log(res));
+  url = `${URL}/api/order/new`;
+  test(url, "post", order, (res) => location.reload());
 });

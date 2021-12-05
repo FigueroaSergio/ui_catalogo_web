@@ -1,8 +1,11 @@
 user = JSON.parse(user);
 const tbOrders = document.getElementById("tb-orders");
 let orders = {};
-if (user.type != "COORD") {
+if (user.type == "ASE") {
   window.location.replace("/profile.html");
+}
+if (user.type == "ADM") {
+  window.location.replace("/admin.html");
 }
 fillData(user);
 getOrders();
@@ -13,7 +16,7 @@ function formDate(date) {
   return str;
 }
 function getOrders() {
-  url = "http://localhost:8080/api/order/zona/" + user.zone;
+  url = `${URL}/api/order/zona/${user.zone}`;
   test(url, "get", {}, (data) => {
     order = data;
     renderData(order);
@@ -82,7 +85,7 @@ function renderData(data) {
   tbOrders.innerHTML = rows;
 }
 function changeStatus(btn, id) {
-  url = "http://localhost:8080/api/order/update";
+  url = `${URL}/api/order/update`;
   let status = document.getElementById(`select-${btn}`).value;
   let data = { id: id, status: status };
   test(url, "put", data, (res) => {

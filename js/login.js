@@ -1,5 +1,5 @@
 var form = document.getElementById("form-login");
-var urlBase = "http://localhost:8080/api/user/";
+var urlBase = URL + "/api/user/";
 let pass = document.getElementById("password");
 let email = document.getElementById("email");
 let fpass = document.getElementById("feed-pass");
@@ -44,10 +44,8 @@ login = function (res) {
     message(`Bienvenido ${res.name}`, "info");
     let user = JSON.stringify(res);
     sessionStorage.setItem("user", user);
-    if (user.type == "COORD")
-      setTimeout(window.location.replace("/profileCoord.html"), 1000 * 2);
-    else {
-      setTimeout(window.location.replace("/profile.html"), 1000 * 2);
-    }
+    console.log(user);
+
+    setTimeout(window.location.replace("/profile.html"), 1000 * 2);
   }
 };
