@@ -16,7 +16,7 @@ form.addEventListener(
     if (!form.checkValidity()) {
       event.stopPropagation();
     } else {
-      let url = urlBase + $("#email").val();
+      let url = urlBase + "emailexist/" + $("#email").val();
       test(url, "get", {}, verifyMail);
     }
 
@@ -35,12 +35,19 @@ verifyMail = function (res) {
   }
 };
 login = function (res) {
-  if (res.name == "NO DEFINIDO") {
+  if (res.id == null) {
     form.classList.remove("was-validated");
     fpass.textContent = "contraseña incorrecta";
     email.classList.add("is-valid");
     pass.classList.add("is-invalid");
   } else {
     message(`Bienvenido ${res.name}`, "info");
+    let user = JSON.stringify(res);
+    sessionStorage.setItem("user", user);
+    if (user.type == "COORD")
+      setTimeout(window.location.replace("/profileCoord.html"), 1000 * 2);
+    else {
+      setTimeout(window.location.replace("/profile.html"), 1000 * 2);
+    }
   }
 };

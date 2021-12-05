@@ -36,7 +36,9 @@ async function test(url, method, data, cb) {
 
     //console.log(res);
     cb(res);
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 }
 function message(message, type) {
   var wrapper = document.createElement("div");

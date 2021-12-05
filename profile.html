@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="./js/status.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+
+    <title>Profile</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html
+        ">
+          <img
+            src="/logo.svg"
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+          Alto tumerque<small > LTDA</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul
+            class="
+              navbar-nav
+              col-auto
+              ms-auto
+              mb-2 mb-lg-0
+              justify-content-center
+            "
+          >
+            
+            </li>
+          </ul>
+      
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container " style="height: 90vh;" >
+        <div class="row ">
+            <div class="col col-sm-6 col-md-4 col-xl-3">
+                <div class="card text-center">
+                
+                    <div class="card-body">
+                      <h5 class="card-title" id="user-name"></h5>
+                      <strong>Identificacion:</strong>
+                      <p class="card-text"id="user-id" >sss</p>
+                      <strong>Email:</strong>
+                      <p class="card-text" id="user-mail" >ss</p>
+                      <strong>Perfil:</strong>
+                      <p class="card-text" id="user-profile">s</p>
+                    </div>
+                    
+                  </div>
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button" role="tab" aria-controls="products" aria-selected="true">Productos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pedidos-tab" data-bs-toggle="tab" data-bs-target="#pedir" type="button" role="tab" aria-controls="Pedir" aria-selected="false">Pedir</button>
+                    </li>
+                    
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="products" role="tabpanel" aria-labelledby="products-tab">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Foto</th>
+
+                              </tr>
+                            </thead>
+                            <tbody id="tb-products">
+                              
+                            </tbody>
+                          </table>
+                        </div> 
+                    </div>
+                    <div class="tab-pane fade" id="pedir" role="tabpanel" aria-labelledby="profile-tab">
+                        <form class="row g-4" id="form-order">
+                            <div class="col-auto">
+                                <label for="exampleFormControlInput1" class="form-label">Producto</label>
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-select" id="select-product" aria-label="Default select example">
+                                   
+                                  </select>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <input type="number" class="form-control" id="num-product" placeholder="Cantidad">
+                              </div>
+                            <div class="col-auto">
+                              <button type="submit" id="add-pedido" class="btn  btn-dark mb-3">Añadir</button>
+                            </div>
+                          </form>
+                          <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Codigo</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Accion</th>             
+                                  </tr>
+                                </thead>
+                                <tbody id="tb-orders">
+                                  
+                                </tbody>
+                              </table>
+                            </div> 
+                            <button  id="send-pedido" class="btn visually-hidden btn-dark mb-3">Pedir</button>
+
+                    </div>
+                    
+                  </div>
+            </div>
+            
+        </div>
+  
+    </div>
+        
+  </body>
+  <script src="./js/index.js"></script>
+  <script src="./js/fillData.js"></script>
+  <script src="./js/profile.js"></script>
+  
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"
+  ></script>
+</html>
